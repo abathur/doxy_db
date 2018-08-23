@@ -1,5 +1,5 @@
 ---
 language: nix
-script:
-  - nix-shell --pure ci.nix
-  - black --check --py36 *.py doxy_db
+# script:
+#   - nix-shell ci.nix --pure --show-trace
+#   - black --check --py36 *.py doxy_db
