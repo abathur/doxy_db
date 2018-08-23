@@ -1,0 +1,10 @@
+[run]
+omit =
+	doxy_db/tests/*
+	doxy_db/*_manual.py
+
+[report]
+show_missing = True
+exclude_lines =
+    pragma: no cover
+    raise NotImplementedError

@@ -1,0 +1,5 @@
+---
+language: nix
+script:
+  - nix-shell --pure ci.nix
+  - black --check --py36 *.py doxy_db

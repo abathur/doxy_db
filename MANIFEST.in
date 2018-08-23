@@ -1,0 +1,1 @@
+include doxy_db/tests/*.db
