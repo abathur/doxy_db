@@ -1,14 +1,14 @@
 { pkgs ? import <nixpkgs> {} }:
 
 pkgs.python36Packages.buildPythonPackage rec {
-	# building some snowflake dependencies first
+	# building my version of doxygen first
 	doxygen = pkgs.doxygen.overrideAttrs (attrs: {
 	  name = "doxygen-1.8.15-sqlite3gen";
 	  src = pkgs.fetchFromGitHub {
 	    owner  = "abathur";
 	    repo   = "doxygen";
-	    rev    = "65df7145398668285ab9403593a254d09f10d5b3";
-	    sha256 = "1gkbixpwmnvi99bcz24px8na254q6bkz23701mnn8j8jmqxq2nbp";
+	    rev    = "61cddaf2d440aff48868fc3a50185a2788917914";
+	    sha256 = "10p0968daz3l0r1la4nzivxvmbb2c9515piidq64c02ky3gmwnf9";
 	  };
 	  buildInputs = attrs.buildInputs ++ [ pkgs.sqlite ];
 	  cmakeFlags = [
@@ -22,6 +22,7 @@ pkgs.python36Packages.buildPythonPackage rec {
 	name = "${pname}-${version}";
 	src = ./.;
 
+	DOXYGEN_ROOT = "${doxygen.src}";
 	DOXYGEN_EXAMPLES_DIR = "${doxygen.src}/examples";
 
 	checkInputs = [
@@ -43,5 +44,6 @@ pkgs.python36Packages.buildPythonPackage rec {
 	# clean up? irrelevant on CI, but useful locally
 	rm -rf doxy_db/tests/xml
 	rm doxy_db/tests/doxygen_sqlite3.db
+	ls -la doxy_db/tests
 	'';
 }

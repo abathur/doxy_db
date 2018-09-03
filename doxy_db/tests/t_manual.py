@@ -193,7 +193,7 @@ class TestViews(unittest.TestCase):
 
         # since we only have one directory, named examples, listing all of its innerfile children should give us all of our files...
         fileview = man.make_compound_tree(["dir"], man.relations.get("innerfiles"))
-        docview = fileview(name=os.environ.get("DOXYGEN_EXAMPLES_DIR", "examples"))
+        docview = fileview(name="examples")
 
         self.assertEqual(docview.list(), listview.list())
 
