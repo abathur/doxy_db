@@ -197,7 +197,7 @@ class TestEntities(unittest.TestCase):
         xml_files = self.files.union(self.bodyfiles)
         sql_files = {
             x.name
-            for x in db.connection.execute("select distinct name from file;")
+            for x in db.connection.execute("select distinct name from path;")
             if not badfile(x.name)
         }
 
@@ -218,14 +218,14 @@ class TestEntities(unittest.TestCase):
             sql_memberdefs = {
                 x.refid
                 for x in db.connection.execute(
-                    "select distinct refid from refid join memberdef on refid.rowid=memberdef.rowid join file on memberdef.file_id=file.rowid where file.name=?;",
+                    "select distinct refid from refid join memberdef on refid.rowid=memberdef.rowid join path on memberdef.file_id=path.rowid where path.name=?;",
                     (file,),
                 )
             }
             sql_compounddefs = {
                 x.refid
                 for x in db.connection.execute(
-                    "select distinct refid from refid join compounddef on refid.rowid=compounddef.rowid join file on compounddef.file_id=file.rowid where file.name=? and compounddef.kind not in ('page', 'example', 'group');",
+                    "select distinct refid from refid join compounddef on refid.rowid=compounddef.rowid join path on compounddef.file_id=path.rowid where path.name=? and compounddef.kind not in ('page', 'example', 'group');",
                     (file,),
                 )
             }
