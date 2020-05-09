@@ -5,10 +5,11 @@ pkgs.python36Packages.buildPythonPackage rec {
   doxygen = pkgs.doxygen.overrideAttrs (attrs: rec {
     name = "doxygen-1.8.19-sqlite3gen";
     src = pkgs.fetchFromGitHub {
-      owner  = "abathur"; # TODO: set back to doxygen when fix is merged
+      owner  = "doxygen";
       repo   = "doxygen";
-      rev    = "2a6f9d50d606c59e86fe99e4304f056fd7f1032c";
-      sha256 = "058f93l23paiwm4h414hnh3yw1hqapp1bni15qivsaysz41g8r9k"; # fix
+      # specific fix commit (now merged, unreleased)
+      rev    = "129bffd3885650cbf462c969d47bf74ee4e9ff06";
+      sha256 = "01ci8s3kvhj10kxhyw6q333cssj00ava37ygyf9n0dgnkfrn6sih";
     };
     buildInputs = attrs.buildInputs ++ [ pkgs.sqlite ];
     cmakeFlags = [
