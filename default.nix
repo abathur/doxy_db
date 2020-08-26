@@ -3,13 +3,13 @@
 pkgs.python36Packages.buildPythonPackage rec {
   # building my version of doxygen first
   doxygen = pkgs.doxygen.overrideAttrs (attrs: rec {
-    name = "doxygen-1.8.19-sqlite3gen";
+    name = "doxygen-1.8.20-sqlite3gen";
     src = pkgs.fetchFromGitHub {
       owner  = "doxygen";
       repo   = "doxygen";
       # specific fix commit (now merged, unreleased)
-      rev    = "129bffd3885650cbf462c969d47bf74ee4e9ff06";
-      sha256 = "01ci8s3kvhj10kxhyw6q333cssj00ava37ygyf9n0dgnkfrn6sih";
+      rev    = "Release_1_8_20";
+      sha256 = "17chvi3i80rj4750smpizf562xjzd2xcv5rfyh997pyvc1zbq5rh";
     };
     buildInputs = attrs.buildInputs ++ [ pkgs.sqlite ];
     cmakeFlags = [
