@@ -29,13 +29,10 @@ pkgs.python36Packages.buildPythonPackage rec {
   DOXYGEN_ROOT = "${doxygen}";
   DOXYGEN_EXAMPLES_DIR = "${doxygen}/examples";
 
-  checkInputs = [
+  checkInputs = with pkgs.python36Packages; [
     pkgs.libxslt
-    pkgs.python36Packages.lxml
-
     doxygen
-    pkgs.python36Packages.pytestcov
-  ];
+  ] ++ [ lxml pytest pytestcov pytestrunner black ];
   COLUMNS = 114; # override to tidy output
   preCheck = ''
     # build docs
