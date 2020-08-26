@@ -35,6 +35,9 @@ pkgs.python36Packages.buildPythonPackage rec {
   ] ++ [ lxml pytest pytestcov pytestrunner black ];
   COLUMNS = 114; # override to tidy output
   preCheck = ''
+    # check format
+    black --check --target-version py36 *.py doxy_db
+
     # build docs
     doxygen examples.conf
 
