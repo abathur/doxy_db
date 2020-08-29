@@ -3,4 +3,4 @@
 # install: source <(curl -Ls https://github.com/abathur/nix-travis-ci/raw/master/install.sh)
 # script: nix-build
 version: ~> 1.0
-import: abathur/nix-travis-ci:nix.yml
+import: abathur/nix-travis-ci:nix.yml@pre2
