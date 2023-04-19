@@ -189,7 +189,7 @@ class TestEntities(unittest.TestCase):
         """
 
         def badfile(path):
-            for bad in ("bug", "deprecated", "test", "todo"):
+            for bad in ("deprecated", "test", "todo"):
                 if path.endswith(bad):
                     return True
             return False
@@ -207,7 +207,7 @@ class TestEntities(unittest.TestCase):
         """
         Ideal: check all locations in XML, and all IDs on memberdef/compounddef in SQL.
 
-        Reality: XML doesn't give example, page, or group compounds a location, so we have to exclude from SQL query.
+        Reality: XML doesn't give group compounds a location, so we have to exclude from SQL query.
         """
         for file in self.files:
             # both memberdef and compounddef
@@ -225,7 +225,7 @@ class TestEntities(unittest.TestCase):
             sql_compounddefs = {
                 x.refid
                 for x in db.connection.execute(
-                    "select distinct refid from refid join compounddef on refid.rowid=compounddef.rowid join path on compounddef.file_id=path.rowid where path.name=? and compounddef.kind not in ('page', 'example', 'group');",
+                    "select distinct refid from refid join compounddef on refid.rowid=compounddef.rowid join path on compounddef.file_id=path.rowid where path.name=? and compounddef.kind not in ('group');",
                     (file,),
                 )
             }

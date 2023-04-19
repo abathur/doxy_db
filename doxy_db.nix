@@ -8,14 +8,14 @@
 python36Packages.buildPythonPackage rec {
   # building my version of doxygen first
   doxygen_sqlite3 = doxygen.overrideAttrs (attrs: rec {
-    name = "doxygen-1.9.0-sqlite3gen";
+    name = "doxygen-1.9.1-sqlite3gen";
     src = fetchFromGitHub {
       owner  = "doxygen";
       repo   = "doxygen";
       # specific fix commit (now merged, unreleased)
       # Release_1_9_0, Release_1_9_1, Release_1_9_2, Release_1_9_3, Release_1_9_4, Release_1_9_5, Release_1_9_6
-      rev    = "Release_1_9_0";
-      hash   = "sha256-LHN08qTmVreZa+K9fcZ00CFAWUVf87Xci/WvjExUkng=";
+      rev    = "Release_1_9_1";
+      hash   = "sha256-sY/yFkpBpO3HbPsuaxvC0AXrpMsBa6j1UOh0Ra+RvHw=";
     };
     buildInputs = attrs.buildInputs ++ [ sqlite ];
     cmakeFlags = [
