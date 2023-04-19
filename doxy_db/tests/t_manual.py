@@ -312,7 +312,7 @@ class TestManual(unittest.TestCase):
                     "refid": "pag_example",
                     "kind": "page",
                     "name": "pag_example",
-                    "summary": None,
+                    "summary": "",
                 }
             ),
         )
@@ -325,9 +325,9 @@ class TestManual(unittest.TestCase):
                 rowid=doc.rowid,
                 kind="page",
                 name="pag_example",
-                title=None,
+                title="pag_example",
                 file_id=doc.file_id,
-                briefdescription=None,
+                briefdescription="",
                 detaileddescription='<para> Our main function starts like this: <programlisting filename="include_test.cpp"></programlisting>First we create an object <computeroutput>t</computeroutput> of the <ref refid="classInclude__Test" kindref="compound">Include_Test</ref> class. <programlisting filename="include_test.cpp"></programlisting>Then we call the example member function <programlisting filename="include_test.cpp"></programlisting>After that our little test routine ends. <programlisting filename="include_test.cpp"></programlisting></para>\n',
                 relations=[],
             ),
@@ -347,7 +347,7 @@ class TestManual(unittest.TestCase):
                     "refid": "pag_example",
                     "kind": "page",
                     "name": "pag_example",
-                    "summary": None,
+                    "summary": "",
                 }
             ),
         )
@@ -375,7 +375,7 @@ class TestManual(unittest.TestCase):
                 line=11,
                 detaileddescription="<para>More details about this function. </para>\n",
                 briefdescription="<para>An example member function. </para>\n",
-                inbodydescription=None,
+                inbodydescription="",
                 relations=["compounds"],
             ),
         )
@@ -389,7 +389,7 @@ class TestManual(unittest.TestCase):
                     refid="structVehicle_1a6891d3d28853bc3fdd075596dc6de9f8",
                     kind="function",
                     name="vehicleStart",
-                    summary=None,
+                    summary="",
                 )
             ],
         )

@@ -77,7 +77,7 @@ class TestInterface(unittest.TestCase):
 
     def test_brief_vs_doc(self):
         # stub has a 'summary' that generalizes title for a page, but briefdescription for other compounds.
-        self.assertEqual(self.brief["summary"], self.record["title"])
+        self.assertEqual(self.brief["name"], self.record["name"])
 
     def test_disambiguate(self):
         brief_search = json.loads(api1.brief("member"))

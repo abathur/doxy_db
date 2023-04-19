@@ -12,7 +12,7 @@ from pkg_resources import parse_version
 from . import db, sql, exceptions, loggle, DEFAULT_DB_URI
 
 
-SUPPORTED_SCHEMA_VERSION = parse_version("0.2.0")
+SUPPORTED_SCHEMA_VERSION = parse_version("0.2.1")
 FIRST_COMPAT_DOXYGEN_VERSION = parse_version("1.8.15")
 
 
