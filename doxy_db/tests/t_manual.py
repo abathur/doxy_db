@@ -328,7 +328,7 @@ class TestManual(unittest.TestCase):
                 title=None,
                 file_id=doc.file_id,
                 briefdescription=None,
-                detaileddescription='<para> Our main function starts like this: <programlisting filename="include_test.cpp"></programlisting> First we create an object <computeroutput>t</computeroutput> of the <ref refid="classInclude__Test" kindref="compound">Include_Test</ref> class. <programlisting filename="include_test.cpp"></programlisting> Then we call the example member function <programlisting filename="include_test.cpp"></programlisting> After that our little test routine ends. <programlisting filename="include_test.cpp"></programlisting> </para>\n',
+                detaileddescription='<para> Our main function starts like this: <programlisting filename="include_test.cpp"></programlisting>First we create an object <computeroutput>t</computeroutput> of the <ref refid="classInclude__Test" kindref="compound">Include_Test</ref> class. <programlisting filename="include_test.cpp"></programlisting>Then we call the example member function <programlisting filename="include_test.cpp"></programlisting>After that our little test routine ends. <programlisting filename="include_test.cpp"></programlisting></para>\n',
                 relations=[],
             ),
         )
@@ -343,7 +343,7 @@ class TestManual(unittest.TestCase):
             results,
             stub(
                 **{
-                    "rowid": 208,
+                    "rowid": 202,
                     "refid": "pag_example",
                     "kind": "page",
                     "name": "pag_example",
@@ -398,7 +398,7 @@ class TestManual(unittest.TestCase):
             man.doc_search("modules group1 func"),
             [
                 stub(
-                    rowid=161,
+                    rowid=156,
                     refid="group__group1_1ga24f647174760cac13d2624b5ad74b00c",
                     kind="function",
                     name="func",

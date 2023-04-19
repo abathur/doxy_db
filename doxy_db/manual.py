@@ -175,8 +175,7 @@ class Manual(db.DoxygenSQLite3):
         return results
 
     def query(self, topic, within):
-        """
-        """
+        """ """
         partial_matches = []
         for doc in within:
             # try for an exact match
