@@ -291,7 +291,7 @@ class TestManual(unittest.TestCase):
                         summary="<para>An overloaded member function. </para>\n",
                     ),
                     stub(
-                        rowid=58,
+                        rowid=57,
                         refid="classFn__Test_1a823b5c9726bb8f6ece50e57ac8e3092c",
                         kind="function",
                         name="member",
@@ -398,7 +398,7 @@ class TestManual(unittest.TestCase):
             man.doc_search("modules group1 func"),
             [
                 stub(
-                    rowid=156,
+                    rowid=155,
                     refid="group__group1_1ga24f647174760cac13d2624b5ad74b00c",
                     kind="function",
                     name="func",
