@@ -385,7 +385,7 @@ class TestManual(unittest.TestCase):
             man.doc_search("structs Truck vehicleStart"),
             [
                 stub(
-                    rowid=34,
+                    rowid=31,
                     refid="structVehicle_1a6891d3d28853bc3fdd075596dc6de9f8",
                     kind="function",
                     name="vehicleStart",
