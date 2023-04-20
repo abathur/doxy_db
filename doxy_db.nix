@@ -1,11 +1,11 @@
-{ python36Packages
+{ python39Packages
 , doxygen
 , fetchFromGitHub
 , sqlite
 , libxslt
 }:
 
-python36Packages.buildPythonPackage rec {
+python39Packages.buildPythonPackage rec {
   # building my version of doxygen first
   doxygen_sqlite3 = doxygen.overrideAttrs (attrs: rec {
     name = "doxygen-1.9.7-sqlite3gen";
@@ -37,7 +37,7 @@ python36Packages.buildPythonPackage rec {
   DOXYGEN_ROOT = "${doxygen_sqlite3}";
   DOXYGEN_EXAMPLES_DIR = "${doxygen_sqlite3}/examples";
 
-  checkInputs = with python36Packages; [
+  checkInputs = with python39Packages; [
     libxslt
     doxygen_sqlite3
   ] ++ [ lxml pytest pytestcov pytestrunner black ];
