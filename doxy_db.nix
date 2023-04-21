@@ -22,14 +22,14 @@ let
   doxygen_sqlite3 = doxygen.overrideAttrs (attrs: rec {
     name = "doxygen-1.9.6-sqlite3gen";
     src = fetchFromGitHub {
-      owner  = "abathur";
+      owner  = "doxygen";
       repo   = "doxygen";
       # specific fix commit (now merged, unreleased)
       # Release_1_9_0, Release_1_9_1, Release_1_9_2, Release_1_9_3, Release_1_9_4, Release_1_9_5, Release_1_9_6
       # bad: b8a3ff6c33264c43cdf30c04baa9793e7e8d51a2 592aaa4f17d73ec8c475df0f44efaea8cc4d575c
       # good: 6a7201851a1667da40b4e2a1cf7b481c2d386803 5d0281a264e33ec3477bd7f6a9dcef79a6ef8eeb e03e2a29f9279deabe62d795b0db925a982d0eef
-      rev    = "test_schema_version_fix_1_9_6_6";
-      hash   = "sha256-s+OcCb2SJD2bYGihoWdQve3TzzxeCzhsERBsPP9yfUE=";
+      rev    = "a653287a0d4fed1ab25a69e5f0034e16ba7b85d6";
+      hash   = "sha256-jlpUiazmO2cLLnN7hVqptmQYcsD+6sbPuXmjzVjj+Sg=";
     };
     buildInputs = attrs.buildInputs ++ [ sqlite ];
     cmakeFlags = [
@@ -42,7 +42,7 @@ let
     outputs = [ "out" "examples" ];
   });
 
-  builtExamples = runCommand "all.xml" {
+  builtExamples = runCommand "built_examples" {
     # not really necessary for a package that's in stdenv
     DOXYGEN_ROOT = "${doxygen_sqlite3}";
     DOXYGEN_EXAMPLES_DIR = "${doxygen_sqlite3.examples}";
