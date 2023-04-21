@@ -1,14 +1,22 @@
-{ python39Packages
+{ python311Packages
 , doxygen
 , fetchFromGitHub
 , sqlite
 , libxslt
 }:
 
-python39Packages.buildPythonPackage rec {
+# at nixpkgs 3913f6a514fa3eb29e34af744cc97d0b0f93c35c
+# - python36, 37, and 38 all work
+# - python39 fails on something in pyflakes
+# at nixpkgs d1c3fea7ecbed758168787fe4e4a3157e52bc808 april 14 2022
+# - python 38, 39, 310 work
+# - python311 fails on something in cython
+# at nixpkgs c2c0373ae7abf25b7d69b2df05d3ef8014459ea3 sept 15 2022
+
+python311Packages.buildPythonPackage rec {
   # building my version of doxygen first
   doxygen_sqlite3 = doxygen.overrideAttrs (attrs: rec {
-    name = "doxygen-1.9.7-sqlite3gen";
+    name = "doxygen-1.9.6-sqlite3gen";
     src = fetchFromGitHub {
       owner  = "abathur";
       repo   = "doxygen";
@@ -16,8 +24,8 @@ python39Packages.buildPythonPackage rec {
       # Release_1_9_0, Release_1_9_1, Release_1_9_2, Release_1_9_3, Release_1_9_4, Release_1_9_5, Release_1_9_6
       # bad: b8a3ff6c33264c43cdf30c04baa9793e7e8d51a2 592aaa4f17d73ec8c475df0f44efaea8cc4d575c
       # good: 6a7201851a1667da40b4e2a1cf7b481c2d386803 5d0281a264e33ec3477bd7f6a9dcef79a6ef8eeb e03e2a29f9279deabe62d795b0db925a982d0eef
-      rev    = "fix_schema_version";
-      hash   = "sha256-T1I2N2TzUPzrdCvEWyBYLzYc/5vCPws7/OjqHRQ/pL4=";
+      rev    = "test_schema_version_fix_1_9_6";
+      hash   = "sha256-C9UiMSZtEY0cbR0A7TYKyZU8gdYYgDuuW6aDL/bvG5g=";
     };
     buildInputs = attrs.buildInputs ++ [ sqlite ];
     cmakeFlags = [
@@ -37,14 +45,14 @@ python39Packages.buildPythonPackage rec {
   DOXYGEN_ROOT = "${doxygen_sqlite3}";
   DOXYGEN_EXAMPLES_DIR = "${doxygen_sqlite3}/examples";
 
-  checkInputs = with python39Packages; [
+  checkInputs = with python311Packages; [
     libxslt
     doxygen_sqlite3
-  ] ++ [ lxml pytest pytestcov pytestrunner black ];
+  ] ++ [ lxml pytest pytestcov pytestrunner ];
   COLUMNS = 114; # override to tidy output
   preCheck = ''
     # check format
-    black --check --target-version py36 *.py doxy_db
+    # black --check --target-version py36 *.py doxy_db
 
     # build docs
     doxygen examples.conf

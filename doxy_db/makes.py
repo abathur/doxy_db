@@ -155,7 +155,7 @@ class Types(Defs):
                     self.cursor_type_cache[cursor] = self.defs[cursor.description]
                 except KeyError:
                     loggle.info(
-                        "No pre-defined type found; generating implicit type for",
+                        "No pre-defined type found; generating implicit type for %s %s",
                         cursor,
                         row,
                     )
