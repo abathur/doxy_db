@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/55070e598e0e03d1d116c49b9eff322ef07c6ac6";
+    nixpkgs.url = "github:nixos/nixpkgs/8ad5e8132c5dcf977e308e7bf5517cc6cc0bf7d8";
     flake-utils.url = "github:numtide/flake-utils";
     flake-compat = {
       url = "github:edolstra/flake-compat";
@@ -14,6 +14,7 @@
     {
       overlays.default = final: prev: {
         doxy_db = prev.callPackage ./doxy_db.nix { };
+        doxygen_sqlite3 = prev.callPackage ./doxygen_sqlite3.nix { };
       };
       # shell = ./shell.nix;
     } // flake-utils.lib.eachDefaultSystem (system:
@@ -24,16 +25,15 @@
             self.overlays.default
           ];
         };
-        demo = ./prompt_demo.sh;
       in
         {
           packages = {
             inherit (pkgs) doxy_db;
             default = pkgs.doxy_db;
           };
-          # checks = pkgs.callPackages ./test.nix {
-          #   inherit (pkgs) doxy_db;
-          # };
+          checks = pkgs.callPackages ./test.nix {
+            inherit (pkgs) doxygen_sqlite3;
+          };
           # devShells = {
           #   default = pkgs.mkShell {
           #     buildInputs = [ pkgs.doxy_db pkgs.bashInteractive ];
