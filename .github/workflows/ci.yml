@@ -1,0 +1,27 @@
+name: "Test"
+on:
+  pull_request:
+  push:
+  schedule:
+    # every sunday morning
+    - cron: "0 0 * * 0"
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, macos-latest ]
+      fail-fast: false
+    steps:
+    - name: Checkout doxy_db
+      uses: actions/checkout@v2
+      with:
+        path: doxy_db
+    - uses: cachix/install-nix-action@v18
+      with:
+        nix_path: nixpkgs=channel:nixpkgs-unstable
+        extra_nix_config: |
+          system-features = nixos-test benchmark big-parallel kvm
+          access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+    - run: nix-build doxy_db/default.nix
+
