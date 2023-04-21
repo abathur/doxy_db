@@ -12,6 +12,8 @@
 # - python 38, 39, 310 work
 # - python311 fails on something in cython
 # at nixpkgs c2c0373ae7abf25b7d69b2df05d3ef8014459ea3 sept 15 2022
+# - python311 works
+# at nixpkgs 55070e598e0e03d1d116c49b9eff322ef07c6ac6 feb 12 2023
 
 python311Packages.buildPythonPackage rec {
   # building my version of doxygen first
@@ -45,7 +47,7 @@ python311Packages.buildPythonPackage rec {
   DOXYGEN_ROOT = "${doxygen_sqlite3}";
   DOXYGEN_EXAMPLES_DIR = "${doxygen_sqlite3}/examples";
 
-  checkInputs = with python311Packages; [
+  nativeCheckInputs = with python311Packages; [
     libxslt
     doxygen_sqlite3
   ] ++ [ lxml pytest pytestcov pytestrunner ];
