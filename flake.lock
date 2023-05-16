@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "doxygen-upstream": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1684059148,
+        "narHash": "sha256-fji8fHjhuPCpGcMc/FAu8gYnNimslsC2nZWuCESUXYY=",
+        "owner": "doxygen",
+        "repo": "doxygen",
+        "rev": "acb04c2a27e29b82e697d20ac0561034f0a16e20",
+        "type": "github"
+      },
+      "original": {
+        "owner": "doxygen",
+        "repo": "doxygen",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -36,22 +52,23 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1678571061,
-        "narHash": "sha256-0gI2FHID8XYD3504kLFRLH3C2GmMCzVMC50APV/kZp8=",
+        "lastModified": 1684151413,
+        "narHash": "sha256-Kqi8ki6PTo5aefiTu5tq7kkh3Hw5Z3WFH7utLQ+IoI8=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "8ad5e8132c5dcf977e308e7bf5517cc6cc0bf7d8",
+        "rev": "363465f8f9d3b335f9ddb86a895023974d678a9d",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
+        "ref": "nixpkgs-unstable",
         "repo": "nixpkgs",
-        "rev": "8ad5e8132c5dcf977e308e7bf5517cc6cc0bf7d8",
         "type": "github"
       }
     },
     "root": {
       "inputs": {
+        "doxygen-upstream": "doxygen-upstream",
         "flake-compat": "flake-compat",
         "flake-utils": "flake-utils",
         "nixpkgs": "nixpkgs"

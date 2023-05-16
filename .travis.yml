@@ -1,2 +1,0 @@
-version: ~> 1.0
-import: nix-community/nix-travis-ci:nix.yml@main
