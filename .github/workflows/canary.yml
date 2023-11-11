@@ -21,9 +21,8 @@ jobs:
         nix_path: nixpkgs=channel:nixpkgs-unstable
         extra_nix_config: |
           access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
-    # TODO: enable when version in nixpkgs can work
-    # - name: traditional nix-build succeeds
-    #   run: nix-build
+    - name: traditional nix-build succeeds
+      run: nix-build
     - name: update the lockfile
       run: nix flake update
     - name: flake builds + tests

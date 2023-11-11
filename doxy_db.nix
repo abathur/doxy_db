@@ -1,4 +1,4 @@
-{ python311Packages
+{ python3
 , doxygen
 , runCommand
 , libxslt
@@ -31,16 +31,19 @@ let
     popd
     cp doxygen_sqlite3.db $out/doxygen_sqlite3.db
   '';
-in python311Packages.buildPythonPackage rec {
+in python3.pkgs.buildPythonPackage rec {
 
-  # now it's our turn
   pname = "doxy_db";
   version = "0.0.1";
   src = ./.;
 
-  nativeCheckInputs = with python311Packages; [
+  nativeCheckInputs = with python3.pkgs; [
+    lxml
+    pytest
+    pytestcov
+    pytestrunner
+  ];
 
-  ] ++ [ lxml pytest pytestcov pytestrunner ];
   COLUMNS = 114; # override to tidy output
   preCheck = ''
     # check format
